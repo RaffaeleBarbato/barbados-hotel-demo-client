@@ -6,7 +6,8 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 	const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false)
 	const [newRoomType, setNewRoomType] = useState("")
 
-	useEffect(() => {
+	useEffect(() => 
+	{	//get RoomTypes already stored in DB
 		getRoomTypes().then((data) => {
 			setRoomTypes(data)
 		})
@@ -17,7 +18,8 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 	}
 
 	const handleAddNewRoomType = () => {
-		if (newRoomType !== "") {
+		if (newRoomType !== "") 
+		{
 			setRoomTypes([...roomTypes, newRoomType])
 			setNewRoomType("")
 			setShowNewRoomTypeInput(false)
