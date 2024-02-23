@@ -23,7 +23,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
 	return (
 		<div className="input-group mb-3">
 			<span className="input-group-text" id="room-type-filter">
-				FIlter rooms by type
+				Filter rooms by type
 			</span>
 			<select
 				className="form-select"
