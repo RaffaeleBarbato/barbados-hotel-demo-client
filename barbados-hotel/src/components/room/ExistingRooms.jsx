@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { deleteRoom, getAllRooms } from "../utils/ApiFunctions"
-import { Col} from "react-bootstrap"
+import { Col, Row} from "react-bootstrap"
 import RoomFilter from "../common/RoomFilter"
 import RoomPaginator from "../common/RoomPaginator"
-import {FaEdit, FaEye, FaTrashAlt} from "react-icons/fa"
+import {FaEdit, FaEye, FaTrashAlt, FaPlus} from "react-icons/fa"
 import {Link} from "react-router-dom"
 
 
@@ -89,9 +89,18 @@ const ExistingRooms = () => {
 						<div className="d-flex justify-content-between mb-3 mt-5">
 							<h2>Existing Rooms</h2>
 						</div>
+						
+						<Row>
 							<Col md={6} className="mb-2 md-mb-0">
 								<RoomFilter data={rooms} setFilteredData={setFilteredRooms} />
 							</Col>
+
+							<Col md={6} className="d-flex justify-content-end">
+								<Link to={"/add-room"}>
+									<FaPlus/> Add Room
+								</Link>
+							</Col>
+						</Row>
 
 						<table className="table table-bordered table-hover">
 							<thead>
