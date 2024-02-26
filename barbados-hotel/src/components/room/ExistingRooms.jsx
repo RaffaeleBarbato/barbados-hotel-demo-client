@@ -112,10 +112,10 @@ const ExistingRooms = () => {
 										<td className="gap-2">
 											<Link to={`/edit-room/${room.id}`}>
 												<span className="btn btn-info btn-sm">
-													<FaEdit/>
+													<FaEye/>
 												</span>
 												<span className="btn btn-warning btn-sm">
-													<FaEye/>
+													<FaEdit/>
 												</span>
 											</Link>
 											<button 
