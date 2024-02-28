@@ -1,11 +1,18 @@
-import React from "react"
+import React, { useContext } from "react"
+import MainHeader from "../layout/MainHeader"
+import HotelService from "../common/HotelService"
+import Parallax from "../common/Parallax"
 
 const Home = () => {
-
 	return (
-        <div>
-            <h2>Welcome to the home page</h2>
-		</div>
+		<section>
+			<MainHeader />
+			<div className="container">
+				<Parallax />
+				<HotelService />
+				<Parallax />
+			</div>
+		</section>
 	)
 }
 
