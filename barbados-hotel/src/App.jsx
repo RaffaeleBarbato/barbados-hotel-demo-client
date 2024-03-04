@@ -2,6 +2,7 @@ import React  from "react"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "/node_modules/bootstrap/dist/js/bootstrap.min.js"
 import AddRoom from "./components/room/AddRoom"
+import Checkout from "./components/bookings/Checkout"
 import ExistingRooms from "./components/room/ExistingRooms"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./components/home/Home"
@@ -10,6 +11,7 @@ import Navbar from "./components/layout/NavBar"
 import Footer from "./components/layout/Footer"
 import RoomListing from "./components/room/RoomListing"
 import Admin from "./components/admin/Admin"
+import BookingSuccess from "./components/bookings/BookingSuccess"
 
 function App() {
   return (
@@ -22,8 +24,10 @@ function App() {
           <Route path="/edit-room/:roomId" element={<EditRoom/>}/>
           <Route path="/existing-rooms" element={<ExistingRooms/>}/>
           <Route path="/add-room" element={<AddRoom/>}/>
+          <Route path="/book-room/:roomId" element={<Checkout/>}/>
           <Route path="/browse-all-rooms" element={<RoomListing/>}/>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/booking-success" element={<BookingSuccess/>}/>
 
         </Routes>
       </Router>
