@@ -100,7 +100,7 @@ const BookingForm = () => {
 		<>
 			<div className="container mb-5">
 				<div className="row">
-					<div className="col-md-6">
+					<div className="col-md-4">
 						<div className="card card-body mt-5">
 							<h4 className="card-title">Reserve Room</h4>
 

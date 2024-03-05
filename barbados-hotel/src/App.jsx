@@ -12,6 +12,7 @@ import Footer from "./components/layout/Footer"
 import RoomListing from "./components/room/RoomListing"
 import Admin from "./components/admin/Admin"
 import BookingSuccess from "./components/bookings/BookingSuccess"
+import Bookings from "./components/bookings/Bookings"
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/browse-all-rooms" element={<RoomListing/>}/>
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/booking-success" element={<BookingSuccess/>}/>
-
+          <Route path="/existing-bookings" element={<Bookings/>}/>
         </Routes>
       </Router>
       <Footer/>
