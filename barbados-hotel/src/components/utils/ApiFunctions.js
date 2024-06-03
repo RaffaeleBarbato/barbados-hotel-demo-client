@@ -77,7 +77,7 @@ export async function getRoomById(roomId) {
     }
 }
 
-/* This function saves a new booking to the databse */
+/* This function saves a new booking to the database */
 export async function bookRoom(roomId, booking) {
 	try {
 		const response = await api.post(`/bookings/room/${roomId}/booking`, booking)
@@ -103,7 +103,7 @@ export async function getAllBookings() {
 	}
 }
 
-/* This function get booking by the cnfirmation code */
+/* This function get booking by the confirmation code */
 export async function getBookingByConfirmationCode(confirmationCode) {
 	try {
 		const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
@@ -134,4 +134,83 @@ export async function getAvailableRooms(checkInDate, checkOutDate, roomType) {
 		&checkOutDate=${checkOutDate}&roomType=${roomType}`
 	)
 	return result
+}
+
+/* This function registers a new user to the database */
+export async function registerUser(registration){
+	try{
+		const response = await api.post("/auth/register-user", registration)
+		return response.data
+	}
+	catch(error){
+		if (error.response && error.response.data) {
+			throw new Error(error.response.data)
+		} else {
+			throw new Error(`User registration error : ${error.message}`)
+		}
+	}
+}
+
+/* This function logs an user */
+export async function loginUser(login){
+	try{
+		const response = await api.post("/auth/login", login)
+		if(response.status >= 200 && response.status < 300){
+			return response.data
+		} else {
+			return null
+		}
+	}
+	catch(error){
+		console.error(error)
+		return null
+	}
+}
+
+export async function getUserProfile(userId, token){
+	try{
+		const response = await api.get(`users/profile/${userId}`, {
+		headers : getHeader()
+		})
+		return response.data
+	}
+	catch(error){
+		throw error
+	}
+}
+
+export async function deleteUser(userId) {
+	try {
+		const response = await api.delete(`/users/delete/${userId}`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		return error.message
+	}
+}
+
+/* This is the function to get a single user */
+export async function getUser(userId, token) {
+	try {
+		const response = await api.get(`/users/${userId}`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		throw error
+	}
+}
+
+/* This is the function to get user bookings by the user id */
+export async function getBookingsByUserId(userId, token) {
+	try {
+		const response = await api.get(`/bookings/user/${userId}/bookings`, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		console.error("Error fetching bookings:", error.message)
+		throw new Error("Failed to fetch bookings")
+	}
 }

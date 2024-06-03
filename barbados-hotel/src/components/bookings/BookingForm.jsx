@@ -11,14 +11,20 @@ const BookingForm = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const [errorMessage, setErrorMessage] = useState("")
 	const [roomPrice, setRoomPrice] = useState(0)
+
+const currentUser = localStorage.getItem("userId")
+
 	const [booking, setBooking] = useState({
 		guestFullName: "",
-		guestEmail: "",
+		guestEmail: currentUser,
 		checkInDate: "",
 		checkOutDate: "",
 		numOfAdults: "",
 		numOfChildren: ""
 	})
+
+	const { roomId } = useParams()
+	const navigate = useNavigate()
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target
@@ -26,14 +32,6 @@ const BookingForm = () => {
 		setErrorMessage("")
 	}
 
-    const{roomId} = useParams()
-    const navigate = useNavigate()
-
-    const[roomInfo, setRoomInfo] = useState({
-        photo: "",
-        roomType : "",
-        roomPrice : ""
-    })
 
 	const getRoomPriceById = async (roomId) => {
 		try {
@@ -100,7 +98,7 @@ const BookingForm = () => {
 		<>
 			<div className="container mb-5">
 				<div className="row">
-					<div className="col-md-4">
+					<div className="col-md-6">
 						<div className="card card-body mt-5">
 							<h4 className="card-title">Reserve Room</h4>
 
@@ -135,6 +133,7 @@ const BookingForm = () => {
 										value={booking.guestEmail}
 										placeholder="Enter your email"
 										onChange={handleInputChange}
+										disabled
 									/>
 									<Form.Control.Feedback type="invalid">
 										Please enter a valid email address.
